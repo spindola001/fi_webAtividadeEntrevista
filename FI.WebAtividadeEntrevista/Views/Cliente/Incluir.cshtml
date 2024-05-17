@@ -1,0 +1,19 @@
+﻿@model WebAtividadeEntrevista.Models.ClienteModel
+@{
+    ViewBag.Title = "Cadastrar Cliente";
+}
+@section scripts{
+    <script>
+        let urlPost = '@Url.Action("Incluir", "Cliente", new { area = "" })';
+        let urlBeneficiarioList = '@Url.Action("BeneficiarioList", "Beneficiario", new { area = "" })';
+        let urlExclusaoBen = '@Url.Action("Excluir", "Beneficiario", new { area = "" })';
+        let urlAlteracaoBen = '@Url.Action("Alterar", "Beneficiario", new { area = "" })';
+        var urlHome = '@Url.Action("ShareData", "Home", new { area = "" })';
+        let IdCliente = '@TempData["IdCliente"]';
+        let NomeBen = '@TempData["NomeBen"]';
+        let CPFBen = '@TempData["CPFBen"]';
+    </script>
+    @Scripts.Render("~/bundles/clientes", "~/bundles/beneficiarios", "~/bundles/listBeneficiarios")
+}
+<h2>@Html.Raw(ViewBag.Title)</h2>
+@Html.Partial("Forms")

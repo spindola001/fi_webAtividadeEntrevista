@@ -1,0 +1,38 @@
+﻿@model WebAtividadeEntrevista.Models.BeneficiarioModel
+@section scripts{
+    <script>
+        var urlAlteracaoBen = '@Url.Action("Alterar", "Beneficiario", new { area = "" })';
+        var urlBeneficiarioList = '@Url.Action("BeneficiarioList", "Beneficiario", new { area = "" })';
+        var urlHome = '@Url.Action("ShareData", "Home", new { area = "" })';
+        var IdCliente = '@Model.ClienteModel.Id'
+    </script>
+    @Scripts.Render("~/bundles/listBeneficiarios", "~/bundles/beneficiarios")
+}
+
+<form class="form-inline" id="formCadastroBen">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+                <label for="CPF">CPF:</label>
+                <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 010.011.111-00" maxlength="14">
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João da Silva" maxlength="50">
+            </div>
+        </div>
+        <div class="col-md-2">
+            @if (Url.RequestContext.RouteData.Values["action"].ToString().Contains("Alterar"))
+            {
+                <button id="btn-alterar" class="btn btn-md btn-success" style="margin-top:24px">Incluir</button>
+            }
+            else
+            {
+                <button id="btn-incluir" class="btn btn-md btn-success" style="margin-top:24px">Incluir</button>
+            }
+        </div>
+    </div>
+</form>
+<table id="gridBeneficiarios" class="table" style="margin-top:30px; margin-bottom:5px"></table>
